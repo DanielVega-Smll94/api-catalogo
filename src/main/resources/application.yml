@@ -6,7 +6,7 @@ server:
 spring:
   datasource:
     url: "jdbc:postgresql://localhost:5432/flights_catalog?autoReconnect=true"
-    username: root
+    username: postgres
     password: Mimi2424126
     validation-query: select 1;
     maxActive: 100
