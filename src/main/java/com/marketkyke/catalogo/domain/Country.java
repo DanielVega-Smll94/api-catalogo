@@ -1,14 +1,26 @@
-package com.marketkyke.catalogo.dto;
-import javax.validation.constraints.*;
+package com.marketkyke.catalogo.domain;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-public class CountryDTO {
+@Entity
+public class Country {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-
-    @Size(min=2, max =3)
     private String code;
-    //USE A VALIDATOR THAT IS INCLUDE IN POM.XML
-    @NotBlank(message = "Description is mandatory")
     private String description;
+
+    public Country() {
+
+    }
+
+    public Country(Long id, String code, String description) {
+        this.id = id;
+        this.code = code;
+        this.description = description;
+    }
 
     public Long getId() {
         return id;
@@ -31,15 +43,6 @@ public class CountryDTO {
     }
 
     public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public CountryDTO() {
-    }
-
-    public CountryDTO(Long id, String code, String description) {
-        this.id = id;
-        this.code = code;
         this.description = description;
     }
 }

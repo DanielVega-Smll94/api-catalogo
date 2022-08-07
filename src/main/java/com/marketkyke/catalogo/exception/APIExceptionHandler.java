@@ -23,7 +23,13 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler{
         return ResponseEntity.status(e.getStatus())
                 .body(new ErrorDTO(e.getDescription(),e.getReasons()));
     }
+    @ExceptionHandler(DuplicateResourceException.class)
+    public ResponseEntity<ErrorDTO> duplicateResource(DuplicateResourceException e, WebRequest request) {
+        return ResponseEntity.status(e.getStatus())
+                .body(new ErrorDTO(e.getDescription(), e.getReasons()));
+    }
 
+    @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,HttpHeaders headers,
                                                                   HttpStatus status, WebRequest request){
         List<String> reasons = new ArrayList<>();

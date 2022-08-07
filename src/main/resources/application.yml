@@ -2,3 +2,17 @@ server:
   port: 8090
   servlet:
     context-path: /api/catalogo
+
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/flights_catalog?autoReconnect=true"
+    username: root
+    password: Mimi2424126
+    validation-query: select 1;
+    maxActive: 100
+  jpa:
+    show-sql: false
+    generate-ddl: false
+    properties:
+      hibernate:
+        hbm2ddl.auto: create-drop
